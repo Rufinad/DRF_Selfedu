@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class Women(models.Model):
@@ -7,9 +8,10 @@ class Women(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
-
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE, default=1)
     def __str__(self):
         return self.title
+
 
 
 class Category(models.Model):
